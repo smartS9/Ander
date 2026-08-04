@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Affiliate Marketing Program</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f9;
+}
+header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+button{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    background:#084298;
+}
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+.stat{
+    background:#e9f2ff;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Organization Affiliate Program</h1>
+    <p>Promote our products and earn commissions</p>
+</header>
+
+<div class="container">
+
+    <!-- Product Promotion -->
+    <div class="card">
+        <h2>Featured Product</h2>
+        <img src="https://via.placeholder.com/400x200" width="100%">
+        <p>Promote our premium product and earn 15% commission on every sale.</p>
+        <button onclick="generateLink()">Generate Affiliate Link</button>
+        <p id="affiliateLink"></p>
+    </div>
+
+    <!-- Affiliate Registration -->
+    <div class="card">
+        <h2>Affiliate Registration</h2>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <input type="text" id="paypal" placeholder="PayPal / Bank Account">
+        <button onclick="registerAffiliate()">Register</button>
+        <p id="message"></p>
+    </div>
+
+    <!-- Owner Dashboard -->
+    <div class="card">
+        <h2>Owner Dashboard</h2>
+
+        <div class="dashboard">
+            <div class="stat">
+                <h3>Total Affiliates</h3>
+                <p id="affiliates">0</p>
+            </div>
+
+            <div class="stat">
+                <h3>Total Sales</h3>
+                <p>$12,500</p>
+            </div>
+
+            <div class="stat">
+                <h3>Total Commission</h3>
+                <p>$1,875</p>
+            </div>
+        </div>
+
+        <h3>Commission Payment</h3>
+        <p>Payments are transferred directly to the affiliate's registered account.</p>
+    </div>
+
+</div>
+
+<script>
+let totalAffiliates = 0;
+
+function registerAffiliate(){
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    if(name && email){
+        totalAffiliates++;
+        document.getElementById("affiliates").innerText = totalAffiliates;
+        document.getElementById("message").innerText =
+            "Affiliate registered successfully!";
+    } else {
+        document.getElementById("message").innerText =
+            "Please fill all fields.";
+    }
+}
+
+function generateLink(){
+    const affiliateId = Math.floor(Math.random() * 100000);
+    const link = "https://yourwebsite.com/product?ref=" + affiliateId;
+    document.getElementById("affiliateLink").innerHTML =
+        "<strong>Your Affiliate Link:</strong><br>" + link;
+}
+</script>
+
+</body>
+</html>
